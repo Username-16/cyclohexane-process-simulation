@@ -26,53 +26,43 @@ simulator. Developed as a BSc graduation project at King Saud University (CHE 49
 
 ## Repository Structure
 
+```
 cyclohexane_project/
-│
 ├── config/
-│ └── process_parameters.json ← All tunable design constants
-│
+│   └── process_parameters.json
 ├── simulation/
-│ ├── streams.py ← Stream dataclass (inter-module carrier)
-│ ├── thermodynamics.py ← PR-EOS, flash, enthalpy, Cp°
-│ ├── flowsheet.py ← DAG topology + Wegstein convergence
-│ └── main.py ← Entry point: run, report, PFD export
-│
+│   ├── streams.py
+│   ├── thermodynamics.py
+│   ├── flowsheet.py
+│   └── main.py
 ├── reaction/
-│ ├── kinetics.py ← LHHW (R1) + power-law (R2–R6)
-│ └── reactor.py ← Multi-bed PFR/CSTR integrator
-│
+│   ├── kinetics.py
+│   └── reactor.py
 ├── separation/
-│ ├── flash.py ← Rachford-Rice isothermal flash (V-101)
-│ ├── distillation.py ← FUG shortcut + tray-by-tray (T-101)
-│ └── membrane.py ← Pervaporation membrane (M-101)
-│
+│   ├── flash.py
+│   ├── distillation.py
+│   └── membrane.py
 ├── heat_transfer/
-│ └── heat_exchanger.py ← Counter-current ΔTlm exchanger
-│
+│   └── heat_exchanger.py
 ├── utilities/
-│ ├── pump.py
-│ ├── compressor.py
-│ ├── valve.py
-│ ├── mixer.py
-│ └── splitter.py
-│
+│   ├── pump.py
+│   ├── compressor.py
+│   ├── valve.py
+│   ├── mixer.py
+│   └── splitter.py
 ├── optimization/
-│ ├── surrogate_models.py ← GPR, XGBoost, RF, NN, Stacking ensemble
-│ ├── algorithms.py ← PSO and Differential Evolution
-│ ├── objective_functions.py ← CAPEX, OPEX, energy, production objectives
-│ ├── constraints.py ← Process inequality/equality constraints
-│ ├── train_surrogates.py ← LHS DoE + surrogate training pipeline
-│ ├── optimizer.py ← ProcessOptimizer orchestrator
-│ ├── optimization_main.py ← Parallel multi-scenario runner (8 cores)
-│ ├── multiobjective.py ← Pareto front, NSGA-II utilities
-│ ├── sensitivity.py ← One-at-a-time + Sobol sensitivity analysis
-│ └── uncertainty.py ← Monte Carlo uncertainty propagation
-│
-└── reports/ ← Auto-generated CSV, JSON, Excel, PNG outputs
-
-text
-
----
+│   ├── surrogate_models.py
+│   ├── algorithms.py
+│   ├── objective_functions.py
+│   ├── constraints.py
+│   ├── train_surrogates.py
+│   ├── optimizer.py
+│   ├── optimization_main.py
+│   ├── multiobjective.py
+│   ├── sensitivity.py
+│   └── uncertainty.py
+└── reports/
+```
 
 ## Simulation Engine
 
