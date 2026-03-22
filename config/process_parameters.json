@@ -1,0 +1,119 @@
+{
+  "feed_specifications": {
+    "benzene_feed": {
+      "flowrate_kmol_h": 310.0,
+      "temperature_C": 25.0,
+      "pressure_bar": 1.0
+    },
+    "hydrogen_feed": {
+      "flowrate_kmol_h": 980,
+      "temperature_C": 25.0,
+      "pressure_bar": 30.0
+    }
+  },
+  "reactor_configuration": {
+    "type": "multibed_adiabatic",
+    "number_of_beds": 6,
+    "catalyst": "Pt-Al2O3",
+    "operating_pressure_bar": 30.0,
+    "inlet_temperature_C": 130.0,
+    "max_temperature_C": 265.0,
+    "target_temperature_after_cooling_C": 220.0,
+    "quench_enabled": true,
+    "interstage_cooling_enabled": true,
+    "stage_volumes_m3": [
+      2.0,
+      2.0600883604361133,
+      3.4111968477802836,
+      2.0,
+      2.0,
+      3.894117853292701
+    ]
+  },
+  "separation_configuration": {
+    "flash_separator": {
+      "type": "vertical_drum",
+      "operating_temperature_C": 80.0,
+      "operating_pressure_bar": 25.0
+    },
+"distillation_column": {
+  "type": "sieve_tray",
+  "operating_pressure_bar": 1.0,
+  "condenser_type": "total",
+  "reboiler_type": "kettle",
+  "light_key": "methane",
+  "heavy_key": "cyclohexane",
+  "distillate_LK_mole_frac": 0.2000,
+  "distillate_HK_mole_frac": 0.4331,
+  "bottoms_LK_mole_frac": 0.3000,
+  "bottoms_HK_mole_frac": 0.9264,
+  "reflux_ratio_factor": 2.8213,
+  "max_stages": 800,
+  "min_stages": 3,
+  "lights_recovery_target": 0.999,
+  "tray_design": {
+    "tray_spacing_m": 0.6,
+    "flooding_fraction_design": 0.75,
+    "pressure_drop_per_tray_mbar": 2.0
+  },
+  "convergence": {
+    "max_iterations": 300,
+    "tolerance": 0.001,
+    "temperature_tolerance_C": 0.05,
+    "damping_factor": 0.5,
+    "temperature_damping": 0.4,
+    "pressure_drop_per_tray_bar": 0.01
+  }
+    },
+    "membrane_separator": {
+      "type": "polymeric",
+      "material": "polyimide",
+      "operating_temperature_C": 150.0,
+      "operating_pressure_bar": 1.0,
+      "membrane_area_m2": 100.0,
+      "cyclohexane_permeance_GPU": 50.0,
+      "benzene_permeance_GPU": 5.0,
+      "target_product_purity": 0.995,
+      "minimum_recovery": 0.98
+    }
+  },
+  "heat_exchangers": {
+    "cooler_E02_outlet_target_C": 130.0,
+    "cooler_E04_outlet_target_C": 80.0,
+    "cooler_E05_outlet_target_C": 40.0
+  },
+  "compressors_and_pumps": {
+    "H2_compressor_discharge_pressure_bar": 30.5,
+    "H2_compressor_efficiency": 0.75,
+    "pump_efficiency": 0.75
+  },
+  "design_parameters": {
+    "h2_recycle_fraction": 0.90,
+    "h2_purge_fraction": 0.1,
+    "liquid_recycle_fraction": 0.3151,
+    "distillate_recycle_fraction": 0.9950,
+    "benzene_purge_fraction": 0.005
+  },
+  "simulation_settings": {
+    "max_iterations": 200,
+    "convergence_tolerance": 1.0,
+    "damping_factor": 0.3,
+    "verbose_mode": "silent",
+    "acceleration": {
+      "method": "wegstein",
+      "enable_after_iteration": 3,
+      "q_bounds": [
+        -5.0,
+        0.0
+      ],
+      "safety_factor_max": 3.0,
+      "safety_factor_min": 0.3,
+      "fallback_to_damping_if_fails": true
+    },
+    "_verbose_mode_options": {
+      "silent": "Only final results and errors",
+      "normal": "Convergence summary every iteration",
+      "detailed": "Full iteration details with Wegstein diagnostics"
+    }
+  }
+}
